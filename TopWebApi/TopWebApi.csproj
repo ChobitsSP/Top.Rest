@@ -86,7 +86,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TopApi\TopRest.csproj">
+    <ProjectReference Include="..\TopRest\TopRest.csproj">
       <Project>{9c11cae5-5188-4e71-825b-68fc3135728a}</Project>
       <Name>TopRest</Name>
     </ProjectReference>
