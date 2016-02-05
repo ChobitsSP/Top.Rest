@@ -9,31 +9,33 @@ using Top.Rest.Util;
 
 namespace Top.Rest.Request
 {
-    public class DemoRequest : ITopRequest<DemoResponse>
+    public class DemoRequest : TopRequest<DemoResponse>
     {
         public DemoObject p1 { get; set; }
 
-        public string GetApiName()
+        public string typename { get; set; }
+
+        public override string GetApiName()
         {
             return "demo";
         }
 
-        public IDictionary<string, string> GetParameters()
-        {
-            var dic = new TopDictionary();
-            dic.Add("p1", p1.ToJson());
-            return dic;
-        }
+        //public IDictionary<string, string> GetParameters()
+        //{
+        //    var dic = new TopDictionary();
+        //    dic.Add("p1", p1.ToJson());
+        //    return dic;
+        //}
 
-        public void SetParameters(NameValueCollection parameters)
-        {
-            this.p1 = parameters.ValidateJson<DemoObject>("p1");
-        }
+        //public void SetParameters(NameValueCollection parameters)
+        //{
+        //    this.p1 = parameters.ValidateJson<DemoObject>("p1");
+        //}
 
-        public void Validate()
-        {
-            return;
-            throw new NotImplementedException();
-        }
+        //public void Validate()
+        //{
+        //    return;
+        //    throw new NotImplementedException();
+        //}
     }
 }

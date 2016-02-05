@@ -44,6 +44,7 @@
     <Compile Include="Domain\DemoObject.cs" />
     <Compile Include="ITopUploadRequest.cs" />
     <Compile Include="ITopLogger.cs" />
+    <Compile Include="Request\TopRequest.cs" />
     <Compile Include="TopClient.cs" />
     <Compile Include="Request\DemoRequest.cs" />
     <Compile Include="Response\DemoResponse.cs" />
