@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -14,14 +13,14 @@ namespace Top.Rest.Request
 
         public abstract string GetApiName();
 
-        public IDictionary<string, string> GetParameters()
+        public virtual IDictionary<string, string> GetParameters()
         {
             var dic = new Dictionary<string, string>();
             dic.Add(JSON_NAME, this.ToJson());
             return dic;
         }
 
-        public void SetParameters(NameValueCollection parameters)
+        public virtual void SetParameters(NameValueCollection parameters)
         {
             var obj = Newtonsoft.Json.JsonConvert.DeserializeObject(parameters[JSON_NAME], this.GetType());
 

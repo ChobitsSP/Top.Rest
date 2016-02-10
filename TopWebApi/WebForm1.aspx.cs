@@ -18,7 +18,7 @@ namespace TopWebApi
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string serverurl = "http://localhost:50065/TopHandler.ashx";
+            string serverurl = GetSiteRoot() + "/TopHandler.ashx";
 
             var client = new TopClient(serverurl, APPID, APPSECRET);
 
@@ -33,6 +33,30 @@ namespace TopWebApi
             var rsp = client.Execute(req);
 
             System.Diagnostics.Debugger.Break();
+        }
+
+        public static string GetSiteRoot()
+        {
+            string port = System.Web.HttpContext.Current.Request.ServerVariables["SERVER_PORT"];
+            if (port == null || port == "80" || port == "443")
+                port = "";
+            else
+                port = ":" + port;
+
+            string protocol = System.Web.HttpContext.Current.Request.ServerVariables["SERVER_PORT_SECURE"];
+            if (protocol == null || protocol == "0")
+                protocol = "http://";
+            else
+                protocol = "https://";
+
+            string sOut = protocol + System.Web.HttpContext.Current.Request.ServerVariables["SERVER_NAME"] + port + System.Web.HttpContext.Current.Request.ApplicationPath;
+
+            if (sOut.EndsWith("/"))
+            {
+                sOut = sOut.Substring(0, sOut.Length - 1);
+            }
+
+            return sOut;
         }
     }
 }
