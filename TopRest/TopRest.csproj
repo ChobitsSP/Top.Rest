@@ -51,7 +51,7 @@
     <Compile Include="Server\IServerRequest.cs" />
     <Compile Include="TopDictionary.cs" />
     <Compile Include="Server\TopHandler.cs" />
-    <Compile Include="Util\ReflectionUtils.cs" />
+    <Compile Include="Server\ReflectionUtils.cs" />
     <Compile Include="Server\RequestUtils.cs" />
     <Compile Include="Util\WebUtils.cs" />
     <Compile Include="Util\TopUtils.cs" />
