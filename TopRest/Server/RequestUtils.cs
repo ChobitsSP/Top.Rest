@@ -27,7 +27,16 @@ namespace Top.Rest.Server
                 (req as IParamsValidate).Validate(parameters);
             }
 
-            var rsp = ReflectionUtils.GetRequestType(req, parameters);
+            TopResponse rsp;
+
+            try
+            {
+                rsp = ReflectionUtils.GetRequestType(req, parameters);
+            }
+            catch
+            {
+                throw new TopException(1, "method is null");
+            }
 
             return rsp;
         }
