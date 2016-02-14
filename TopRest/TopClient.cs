@@ -93,7 +93,17 @@ namespace Top.Rest
             //if (expires.HasValue) txtParams.Add(EXPIRES, PushUtils.GetUnixTimestamp(expires.Value).ToString());
             txtParams.Add(SIGN, TopUtils.SignTopRequest(txtParams, appSecret));
 
-            string body = webUtils.DoPost(url, txtParams);
+            string body;
+
+            if (request is ITopUploadRequest)
+            {
+                var fileParams = (request as ITopUploadRequest).GetFileParameters();
+                body = webUtils.DoPost(url, txtParams, fileParams);
+            }
+            else
+            {
+                body = webUtils.DoPost(url, txtParams);
+            }
 
             // 解释响应结果
             T rsp = this.DisableParser ? Activator.CreateInstance<T>() : TopUtils.JsonParser<T>(body);

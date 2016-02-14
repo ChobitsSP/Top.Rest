@@ -6,7 +6,7 @@ namespace Top.Rest.Request
     /// <summary>
     /// TOP上传请求接口，支持同时上传多个文件。
     /// </summary>
-    public interface ITopUploadRequest<T> : ITopRequest<T> where T : TopResponse
+    public interface ITopUploadRequest
     {
         /// <summary>
         /// 获取所有的Key-Value形式的文件请求参数字典。其中：
