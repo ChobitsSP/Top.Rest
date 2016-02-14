@@ -9,6 +9,13 @@ namespace Top.Rest.Request
     /// </summary>
     public interface ITopRequest<T> : IParamsRequest where T : TopResponse
     {
+    }
+
+    /// <summary>
+    /// formatter and parser
+    /// </summary>
+    public interface IParamsRequest
+    {
         /// <summary>
         /// 获取TOP的API名称。
         /// </summary>
@@ -19,13 +26,7 @@ namespace Top.Rest.Request
         /// 提前验证参数。
         /// </summary>
         void Validate();
-    }
 
-    /// <summary>
-    /// formatter and parser
-    /// </summary>
-    public interface IParamsRequest
-    {
         void SetParameters(NameValueCollection parameters);
 
         /// <summary>

@@ -65,6 +65,16 @@ namespace Top.Rest
 
         public T Execute<T>(ITopRequest<T> request, DateTime timestamp) where T : TopResponse
         {
+            return Execute<T>(request as IParamsRequest, timestamp);
+        }
+
+        public T Execute<T>(IParamsRequest request) where T : TopResponse
+        {
+            return Execute<T>(request, DateTime.Now);
+        }
+
+        public T Execute<T>(IParamsRequest request, DateTime timestamp) where T : TopResponse
+        {
             try
             {
                 request.Validate();
@@ -105,7 +115,7 @@ namespace Top.Rest
         }
 
         #endregion
-        
+
         private static T createErrorResponse<T>(int errCode, string errMsg) where T : TopResponse
         {
             T rsp = Activator.CreateInstance<T>();
